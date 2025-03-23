@@ -20,7 +20,13 @@ yarn install
 docker-compose up -d
 ```
 
-6. Ejecutar en modo desarollo
+6. Ejecutar Seed
+
+```
+http://localhost:3000/api/seed
+```
+
+7. Ejecutar en modo desarollo
 
 ```
 yarn start:dev
