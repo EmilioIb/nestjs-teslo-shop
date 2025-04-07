@@ -118,15 +118,15 @@ export class ProductsService {
       product.user = user;
       await queryRunner.manager.save(product);
       await queryRunner.commitTransaction();
-      await queryRunner.release();
 
       // * Otra manera de guardar el producto
       // await this.productRepository.save(product);
       return this.findOnePlain(id);
     } catch (error) {
-      queryRunner.rollbackTransaction();
-      await queryRunner.release();
+      await queryRunner.rollbackTransaction();
       this.handleDbExceptions(error);
+    } finally {
+      await queryRunner.release();
     }
   }
 
